@@ -92,18 +92,33 @@ namespace Zadania
 			_max=max;
 			_avg=sum/data.Length;
 		}
+
+		//zadnie kolejne: zortowanie macierzy w wierszach lub kolumnach
+		//typ ma byc opcjonalnym parametrem enum
+		public static void sort (ref double[,] data, bool row=true)
+		{
+			if (row)
+			{
+				for (int i=0; i<data.GetLength(0); i++)
+				{
+					display (data[i]);//wat?
+				}
+			}
+			else
+			{
+
+			}
+		}
 	}
 
 	class MainClass
 	{
 		public static void Main (string[] args)
 		{
-			double [,] test, test2;
+			double [,] test1, test2;
 			double [] test3, test4;
 
-			test=ArrayUtils.generate(5,10);
-			ArrayUtils.display(test);
-
+			test1=ArrayUtils.generate(5,10);
 			test2=ArrayUtils.generate(2, 2);
 			test3=ArrayUtils.generate(2);
 			test4=ArrayUtils.generate(2);
@@ -112,10 +127,17 @@ namespace Zadania
 			Console.WriteLine("scalar: "+ArrayUtils.getScalar(test3, test4));
 
 			double min, max, avg;
-			ArrayUtils.getStats(test, out min, out max, out avg);
+			ArrayUtils.getStats(test1, out min, out max, out avg);
 			Console.WriteLine("min: "+min+"; max: "+max+"; avg: "+avg);
+
+			ArrayUtils.display(test1);
+			ArrayUtils.sort(ref test1, true);//tu wat
+			ArrayUtils.display(test1);
+
 		}
-		//zadnie kolejne: zortowanie macierzy w wierszach lub kolumnach
-		//typ ma byc opcjonalnym parametrem enum
+		//napisa funkcje obl sume elementow w macierzy NA i pod gl przekatna
+		//metoda obl norme z macierzy
+		//metody albo klase ktora bedzie rozwizywac dowolny uklad rownan liniowych np. metoda elim. gaussa, rozkladu nu ect
+		//
 	}
 }
