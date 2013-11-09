@@ -4,9 +4,10 @@ namespace ZabawaObiektowa
 {	
 	class BankAccount
 	{
-		public BankAccount (decimal amount)
+		public BankAccount (decimal amount, string _owner)
 		{
 			balance=amount;
+			owner=_owner;
 		}
 		public void withdrawal (decimal amount)
 		{
@@ -34,9 +35,10 @@ namespace ZabawaObiektowa
 	{
 		public static void Main (string[] args)
 		{
-			BankAccount account=new BankAccount(1000);
+			BankAccount account=new BankAccount(1000, "Dupa");
 			account.withdrawal(100);
 			Console.WriteLine(account.getBalance());
+			Console.WriteLine (account.getOwner ());
 		}
 	}
 }
