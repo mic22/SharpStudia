@@ -93,15 +93,112 @@ namespace zadania_labki_23_listopada
 		}
 	}
 
+	class Complex
+	{
+		/*
+		get, set Im, Re, dodawanie, odejmowanie, dzielenie, mozenie, modul, faza w stopniach
+		 */
+		private double Re, Im;
+		public Complex ()
+		{
+			this.Re=0;
+			this.Im=0;
+		}
+
+		public Complex setRe (double _Re)
+		{
+			this.Re=_Re;
+			return this;
+		}
+
+		public Complex setIm (double _Im)
+		{
+			this.Im=_Im;
+			return this;
+		}
+
+		public double getRe ()
+		{
+			return this.Re;
+		}
+
+		public double getIm ()
+		{
+			return this.Im;
+		}
+
+		public void print()
+		{
+			if(this.Im>0)
+				Console.WriteLine(this.Re+"+"+this.Im+"i");
+			else
+				Console.WriteLine(this.Re+""+this.Im+"i");
+		}
+
+		public double getModulus ()
+		{
+			return Math.Sqrt ((this.Re*this.Re)+(this.Im*this.Im));
+		}
+
+		public double getPhase ()
+		{
+			if (this.Re > 0)
+				return Math.Atan(this.Im/this.Re);
+			else if (this.Re < 0)
+				return Math.Atan(this.Im/this.Re)+Math.PI;
+
+			return 0;
+		}
+
+		public Complex add (Complex c1)
+		{
+			Complex temp=new Complex();
+			temp.setRe (this.Re+c1.getRe());
+			temp.setIm (this.Im+c1.getIm());
+			return temp;
+		}
+
+		public Complex substract (Complex c1)
+		{
+			Complex temp=new Complex();
+			temp.setRe (this.Re-c1.getRe());
+			temp.setIm (this.Im-c1.getIm());
+			return temp;
+		}
+
+		public Complex mulitiply (Complex c1)
+		{
+			Complex temp=new Complex();
+			temp.setRe ((this.Re*c1.getRe())-(this.Im*c1.getIm())).setIm((this.Re*c1.getIm())+(this.Re*c1.getRe()));
+			return temp;
+		}
+
+		public Complex divide (Complex c1)
+		{
+			/* NOT IMPLEMENTED YET */
+			return new Complex();
+		}
+	}
+
 	class MainClass
 	{
 		public static void Main (string[] args)
 		{
-			//Tablica3W tab=new Tablica3W(2, 3, 3);
-			//tab.render(true);
+			Complex liczba= new Complex();
+			Complex liczba2= new Complex();
+			Complex liczba3;
 
-			Tablica3Wa tab1=new Tablica3Wa(2, 3, 3);
-			tab1.render(true);
+			liczba.setRe(10).setIm(2);
+			liczba2.setRe(5).setIm(4);
+
+			//liczba3=liczba.add(liczba2);
+			//liczba3=liczba.substract(liczba2);
+			liczba3=liczba.mulitiply(liczba2);
+			//liczba3=liczba.divide(liczba2);
+
+			liczba3.print();
+			Console.WriteLine(liczba3.getModulus());
+			Console.WriteLine(liczba3.getPhase());
 		}
 	}
 }
