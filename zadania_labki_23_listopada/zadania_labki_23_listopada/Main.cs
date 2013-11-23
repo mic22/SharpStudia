@@ -169,14 +169,17 @@ namespace zadania_labki_23_listopada
 		public Complex mulitiply (Complex c1)
 		{
 			Complex temp=new Complex();
-			temp.setRe ((this.Re*c1.getRe())-(this.Im*c1.getIm())).setIm((this.Re*c1.getIm())+(this.Re*c1.getRe()));
+			temp.setRe((this.Re*c1.getRe())-(this.Im*c1.getIm())).setIm((this.Re*c1.getIm())+(this.Re*c1.getRe()));
 			return temp;
 		}
 
 		public Complex divide (Complex c1)
 		{
-			/* NOT IMPLEMENTED YET */
-			return new Complex();
+			Complex temp=new Complex();
+			double divider=c1.getRe()*c1.getRe()*c1.getIm()*c1.getIm();
+			temp.setRe(((this.Re*c1.getRe())+(this.Im*c1.getIm()))/divider);
+			temp.setIm(((this.Im*c1.getRe())+(this.Re*c1.getIm()))/divider);
+			return temp;
 		}
 	}
 
@@ -191,12 +194,18 @@ namespace zadania_labki_23_listopada
 			liczba.setRe(10).setIm(2);
 			liczba2.setRe(5).setIm(4);
 
-			//liczba3=liczba.add(liczba2);
-			//liczba3=liczba.substract(liczba2);
-			liczba3=liczba.mulitiply(liczba2);
-			//liczba3=liczba.divide(liczba2);
-
+			liczba3=liczba.add(liczba2);
 			liczba3.print();
+
+			liczba3=liczba.substract(liczba2);
+			liczba3.print();
+
+			liczba3=liczba.mulitiply(liczba2);
+			liczba3.print();
+
+			liczba3=liczba.divide(liczba2);
+			liczba3.print();
+
 			Console.WriteLine(liczba3.getModulus());
 			Console.WriteLine(liczba3.getPhase());
 		}
